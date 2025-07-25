@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith in Action Steuben County - Modern Mockup</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* A dark gray instead of pure black */
+            color: #F3F4F6; /* Off-white for text */
+        }
+        /* Custom gold color classes */
+        .bg-gold-500 { background-color: #D97706; } /* Amber 600 */
+        .text-gold-500 { color: #D97706; }
+        .border-gold-500 { border-color: #D97706; }
+        .hover\:bg-gold-600:hover { background-color: #B45309; } /* Amber 700 */
+        .hover\:text-gold-400:hover { color: #FBBF24; } /* Amber 400 */
+
+        /* Hero section background */
+        .hero-bg {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('https://placehold.co/1920x1080/111827/333333?text=A+Community+of+Care');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Subtle animation for cards */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(217, 119, 6, 0.1), 0 4px 6px -2px rgba(217, 119, 6, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-black/20">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-white">
+                FIA<span class="text-gold-500">Steuben</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#about" class="hover:text-gold-400 transition-colors">About Us</a>
+                <a href="#services" class="hover:text-gold-400 transition-colors">Our Services</a>
+                <a href="#volunteer" class="hover:text-gold-400 transition-colors">Volunteer</a>
+                <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+                <a href="#donate" class="bg-gold-500 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-gold-600 transition-all">
+                    Donate
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#about" class="block hover:text-gold-400 transition-colors">About Us</a>
+            <a href="#services" class="block hover:text-gold-400 transition-colors">Our Services</a>
+            <a href="#volunteer" class="block hover:text-gold-400 transition-colors">Volunteer</a>
+            <a href="#contact" class="block hover:text-gold-400 transition-colors">Contact</a>
+            <a href="#donate" class="block mt-2 bg-gold-500 text-white text-center font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-gold-600 transition-all">
+                Donate
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg min-h-[70vh] flex items-center">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                    Your Neighbors, Your Support
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                    A community of care, providing free assistance to older adults in Steuben County to help them live independently and with dignity.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#contact" class="w-full sm:w-auto bg-gold-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gold-600 transition-transform transform hover:scale-105">
+                        I Need Help
+                    </a>
+                    <a href="#volunteer" class="w-full sm:w-auto bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-600 transition-transform transform hover:scale-105">
+                        I Want to Help
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="about" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">Our Mission</h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto mb-8"></div>
+                <p class="max-w-4xl mx-auto text-gray-300 text-lg">
+                    "Faith in Action Steuben County is a coalition of congregations, civic groups, and individuals working together to serve older adults in need of a little assistance to continue living independently. This support is provided at no charge to the recipient by caring volunteers, selflessly giving their time and compassion to others."
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+                    <p class="text-gray-400">We provide a range of services to help seniors maintain their independence.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="service-card bg-gray-800 p-8 rounded-xl border border-gray-700 text-center">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Transportation</h3>
+                        <p class="text-gray-400">Rides to medical appointments, therapy, social events, errands, and more.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="service-card bg-gray-800 p-8 rounded-xl border border-gray-700 text-center">
+                        <div class="flex justify-center mb-4">
+                           <svg class="w-12 h-12 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Shopping Assistance</h3>
+                        <p class="text-gray-400">We can take you shopping or pick up your groceries and prescriptions for you.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="service-card bg-gray-800 p-8 rounded-xl border border-gray-700 text-center">
+                         <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Friendly Visits</h3>
+                        <p class="text-gray-400">Companionship for those who may be feeling isolated or lonely.</p>
+                    </div>
+                    <!-- Add more cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer Spotlight / Testimonial -->
+        <section id="volunteer" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="lg:flex lg:items-center lg:space-x-12">
+                    <div class="lg:w-1/3 mb-8 lg:mb-0">
+                        <img src="https://placehold.co/400x400/D97706/FFFFFF?text=Volunteer" alt="Volunteer" class="rounded-full mx-auto shadow-lg border-4 border-gold-500">
+                    </div>
+                    <div class="lg:w-2/3 text-center lg:text-left">
+                        <h2 class="text-3xl font-bold mb-4">Make a Difference</h2>
+                        <p class="text-lg text-gray-300 mb-6">"Volunteering with Faith in Action gives me a purpose. It's incredibly rewarding to know that I'm helping my neighbors stay in their homes and remain part of our community. It's more than just giving a ride; it's about connection."</p>
+                        <p class="font-semibold text-white">- S.C., Volunteer</p>
+                        <a href="#contact" class="mt-8 inline-block bg-gold-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gold-600 transition-all">
+                            Become a Volunteer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Donate Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">Get In Touch or Give Support</h2>
+                <p class="text-gray-400 mb-10 max-w-2xl mx-auto">Whether you need assistance, want to volunteer, or wish to support our mission, we'd love to hear from you.</p>
+                <div class="bg-gray-800 p-8 md:p-12 rounded-xl max-w-4xl mx-auto shadow-2xl border border-gray-700">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Contact Info -->
+                        <div class="text-left">
+                            <h3 class="text-2xl font-bold mb-4 text-gold-500">Contact Information</h3>
+                            <div class="space-y-4 text-gray-300">
+                                <p><strong>Hornell Office:</strong><br>(607) 324-1138</p>
+                                <p><strong>Corning Office:</strong><br>(607) 936-0941</p>
+                                <p><strong>Address:</strong><br>20 Broadway Mall, Hornell, NY 14843</p>
+                                <p><strong>Email:</strong><br><a href="mailto:ar@fiasteuben.org" class="hover:text-gold-400">ar@fiasteuben.org</a></p>
+                            </div>
+                        </div>
+                        <!-- Donate Call to Action -->
+                        <div id="donate" class="text-left flex flex-col justify-center">
+                             <h3 class="text-2xl font-bold mb-4 text-gold-500">Support Our Work</h3>
+                             <p class="text-gray-300 mb-6">Your generous donation allows us to continue providing essential services to seniors in our community at no cost. Every contribution makes a difference.</p>
+                             <a href="#" class="w-full bg-gold-500 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gold-600 transition-all text-center">
+                                Donate Securely Online
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; <span id="year"></span> Faith In Action Steuben County. All Rights Reserved.</p>
+            <p class="text-sm mt-2">A modernized website concept.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
