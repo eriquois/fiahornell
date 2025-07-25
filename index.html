@@ -42,6 +42,26 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(217, 119, 6, 0.1), 0 4px 6px -2px rgba(217, 119, 6, 0.05);
         }
+
+        /* Modal styles */
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Loading spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #D97706;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
@@ -149,13 +169,26 @@
                         <h3 class="text-xl font-bold mb-2">Friendly Visits</h3>
                         <p class="text-gray-400">Companionship for those who may be feeling isolated or lonely.</p>
                     </div>
-                    <!-- Add more cards as needed -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gemini Feature: Volunteer Role Suggester -->
+        <section id="volunteer-suggester" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">Find Your Perfect Volunteer Role</h2>
+                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Not sure where you'd fit best? Describe your skills and interests, and we'll suggest a role for you!</p>
+                <div class="max-w-2xl mx-auto">
+                    <textarea id="volunteer-input" class="w-full h-32 p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-500" placeholder="e.g., 'I enjoy driving and talking to people. I'm available on weekday afternoons.' or 'I'm good at fixing small things around the house.'"></textarea>
+                    <button id="suggest-role-btn" class="mt-4 w-full sm:w-auto bg-gold-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gold-600 transition-all">
+                        ✨ Suggest Volunteer Roles For Me
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Volunteer Spotlight / Testimonial -->
-        <section id="volunteer" class="py-20 bg-gray-800">
+        <!-- Volunteer Spotlight / Testimonial with Gemini Feature -->
+        <section id="volunteer" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="lg:flex lg:items-center lg:space-x-12">
                     <div class="lg:w-1/3 mb-8 lg:mb-0">
@@ -163,22 +196,29 @@
                     </div>
                     <div class="lg:w-2/3 text-center lg:text-left">
                         <h2 class="text-3xl font-bold mb-4">Make a Difference</h2>
-                        <p class="text-lg text-gray-300 mb-6">"Volunteering with Faith in Action gives me a purpose. It's incredibly rewarding to know that I'm helping my neighbors stay in their homes and remain part of our community. It's more than just giving a ride; it's about connection."</p>
-                        <p class="font-semibold text-white">- S.C., Volunteer</p>
-                        <a href="#contact" class="mt-8 inline-block bg-gold-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gold-600 transition-all">
-                            Become a Volunteer
-                        </a>
+                        <div id="testimonial-content">
+                            <p class="text-lg text-gray-300 mb-6">"Volunteering with Faith in Action gives me a purpose. It's incredibly rewarding to know that I'm helping my neighbors stay in their homes and remain part of our community. It's more than just giving a ride; it's about connection."</p>
+                            <p class="font-semibold text-white">- S.C., Volunteer</p>
+                        </div>
+                        <div class="mt-8 space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row justify-center lg:justify-start">
+                             <a href="#contact" class="inline-block bg-gold-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gold-600 transition-all">
+                                Become a Volunteer
+                            </a>
+                            <button id="generate-story-btn" class="inline-block bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-600 transition-all">
+                                ✨ Generate an Example Story
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact & Donate Section -->
-        <section id="contact" class="py-20">
+        <section id="contact" class="py-20 bg-gray-800">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-4">Get In Touch or Give Support</h2>
                 <p class="text-gray-400 mb-10 max-w-2xl mx-auto">Whether you need assistance, want to volunteer, or wish to support our mission, we'd love to hear from you.</p>
-                <div class="bg-gray-800 p-8 md:p-12 rounded-xl max-w-4xl mx-auto shadow-2xl border border-gray-700">
+                <div class="bg-gray-900 p-8 md:p-12 rounded-xl max-w-4xl mx-auto shadow-2xl border border-gray-700">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <!-- Contact Info -->
                         <div class="text-left">
@@ -202,19 +242,31 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-900 border-t border-gray-800 py-8">
         <div class="container mx-auto px-6 text-center text-gray-500">
             <p>&copy; <span id="year"></span> Faith In Action Steuben County. All Rights Reserved.</p>
-            <p class="text-sm mt-2">A modernized website concept.</p>
+            <p class="text-sm mt-2">A modernized website concept with AI features.</p>
         </div>
     </footer>
 
+    <!-- Modal for Gemini API responses -->
+    <div id="gemini-modal" class="modal fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4 hidden opacity-0">
+        <div class="bg-gray-800 rounded-xl shadow-2xl p-8 max-w-2xl w-full transform transition-transform scale-95">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold text-gold-500">AI Suggestion</h3>
+                <button id="close-modal-btn" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div id="modal-content" class="text-gray-300">
+                <!-- Loading spinner or content goes here -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Mobile menu toggle
+        // --- Basic Page Functionality ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -222,15 +274,131 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Close mobile menu when a link is clicked
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // --- Gemini API Integration ---
+        const suggestRoleBtn = document.getElementById('suggest-role-btn');
+        const generateStoryBtn = document.getElementById('generate-story-btn');
+        const volunteerInput = document.getElementById('volunteer-input');
+        const testimonialContent = document.getElementById('testimonial-content');
+        
+        // Modal elements
+        const modal = document.getElementById('gemini-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        // Function to open the modal
+        function openModal(title) {
+            modalTitle.textContent = title;
+            modalContent.innerHTML = '<div class="flex justify-center items-center p-8"><div class="loader"></div></div>';
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10); // Fade in
+            setTimeout(() => modal.querySelector('div').classList.remove('scale-95'), 10); // Scale in
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // The core Gemini API call function
+        async function callGemini(prompt) {
+            const apiKey = ""; // API key is handled by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    console.error("Unexpected API response structure:", result);
+                    return "Sorry, I couldn't get a response. The API returned an unexpected format.";
+                }
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                return `Sorry, an error occurred. Please try again later. Details: ${error.message}`;
+            }
+        }
+
+        // Event listener for Volunteer Role Suggester
+        suggestRoleBtn.addEventListener('click', async () => {
+            const userInput = volunteerInput.value.trim();
+            if (!userInput) {
+                alert("Please describe your skills or interests first.");
+                return;
+            }
+
+            openModal("✨ AI-Powered Role Suggestion");
+
+            const prompt = `
+                You are an encouraging and helpful assistant for "Faith in Action Steuben County," a non-profit that helps seniors.
+                Our main volunteer services are: 1. Transportation (giving rides), 2. Shopping Assistance (shopping for or with seniors), 3. Friendly Visits (providing companionship).
+                A potential volunteer has described their skills and interests as: "${userInput}".
+                Based on their description, analyze which of our volunteer roles would be the best fit for them.
+                Respond in a friendly, encouraging tone. Start with a positive affirmation. Then, clearly recommend one or two roles and explain exactly why they would be a good match based on their input.
+                Keep the response concise and easy to read. Format the response as simple HTML with paragraphs (<p>) and bold tags (<strong>) for emphasis.
+            `;
+
+            const suggestion = await callGemini(prompt);
+            modalContent.innerHTML = suggestion;
+        });
+
+        // Event listener for Client Story Generator
+        generateStoryBtn.addEventListener('click', async () => {
+            const originalButtonText = generateStoryBtn.innerHTML;
+            generateStoryBtn.innerHTML = '<div class="loader mx-auto" style="width: 20px; height: 20px; border-width: 2px;"></div>';
+            generateStoryBtn.disabled = true;
+
+            const prompt = `
+                You are a creative storyteller for "Faith in Action Steuben County," a non-profit that helps seniors.
+                Our services include Transportation, Shopping Assistance, and Friendly Visits.
+                Write a short, heartwarming, and completely fictional story (2-3 paragraphs) from the perspective of a volunteer or a senior client.
+                The story should illustrate the positive impact of one of our services.
+                The tone should be touching and genuine, highlighting the importance of community connection.
+                End the story with a fictional name, e.g., "- From Mary P." or "- A note from volunteer Jim."
+                Format the response as simple HTML, using <p> tags for paragraphs and a final <p> with a <strong> tag for the name.
+            `;
+            
+            const story = await callGemini(prompt);
+            testimonialContent.innerHTML = story;
+            
+            generateStoryBtn.innerHTML = originalButtonText;
+            generateStoryBtn.disabled = false;
+        });
+
     </script>
 
 </body>
